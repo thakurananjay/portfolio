@@ -1,5 +1,5 @@
 const LINKS = {
-  resume: "/Resume-Ananjay.pdf",
+  resume: "/resume.pdf",
   linkedin: "https://linkedin.com/in/ananjay-thakur-0ab43333",
   github: "https://github.com/thakurananjay",
   email: "mailto:ananjaythaku13@gmail.com",
