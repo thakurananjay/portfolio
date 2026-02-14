@@ -3,36 +3,36 @@ import { useEffect, useMemo, useRef, useState } from "react";
 const LINKS = {
   resume: "/resume.pdf",
   github: "https://github.com/thakurananjay",
-  linkedin: "https://linkedin.com/in/ananjay-thakur-0ab43333",
-  email: "mailto:ananjaythaku13@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ananjaythakur/",
+  email: "mailto:ananjaythakur13@gmail.com",
 };
 
 const PROJECTS = [
   {
     title: "CareConnect — Healthcare Collaboration Platform",
     short:
-      "Healthcare collaboration platform focused on secure access, clean API design, and scalable UI.",
+      "Healthcare collaboration platform focused on secure access, clean API design, and AI-powered document processing.",
     details: [
-      "Designed REST APIs for authentication, role-based access, and document handling",
-      "Integrated OCR/NLP pipeline to extract and process text from uploaded documents",
-      "Built responsive React UI components focused on usability and data clarity",
-      "Worked on relational database structure for users, roles, and records",
+      "Designed REST APIs for authentication, role-based access control (RBAC), and document workflows",
+      "Integrated OCR + NLP pipeline to extract and process text from uploaded medical documents",
+      "Built responsive React UI components emphasizing usability and structured data presentation",
+      "Worked on relational database schema for users, roles, and healthcare records",
     ],
-    tech: ["React", "Node.js", "MySQL", "REST APIs"],
+    tech: ["React", "Node.js", "Express", "MySQL", "REST APIs", "OCR", "NLP"],
     live: "https://careconnectp.netlify.app/",
     repo: "https://github.com/thakurananjay",
   },
   {
     title: "TRAVESIO — AI-Assisted Travel Planning Platform",
     short:
-      "Travel planning platform providing itinerary recommendations using a simple service-based architecture.",
+      "Travel planning platform providing itinerary recommendations using a lightweight service-based architecture.",
     details: [
-      "Built a Flask service to handle recommendation logic",
-      "Connected frontend and backend via REST APIs",
-      "Kept code modular with clean data flow between services",
-      "Improved UI responsiveness and overall user experience",
+      "Developed a Flask backend service to process inputs and generate travel recommendations",
+      "Integrated React frontend with Flask APIs and handled API responses for dynamic UI updates",
+      "Maintained modular structure with clean separation between frontend and backend services",
+      "Focused on UI responsiveness and smooth user experience",
     ],
-    tech: ["React", "Flask", "REST APIs"],
+    tech: ["React", "Flask", "Python", "REST APIs"],
     live: "",
     repo: "https://github.com/thakurananjay",
   },
@@ -131,28 +131,33 @@ export default function App() {
       <div className="container" ref={rootRef}>
         {/* HERO */}
         <div className="card section reveal show">
-          <div className="kicker">✨ Software Developer • B.Tech CSE (2025)</div>
+          <div className="kicker">
+            ✨ Full-Stack Developer • AI/GenAI (LLMs) Learner • B.Tech CSE (2025)
+          </div>
 
           <div className="header">
             <div style={{ flex: 1 }}>
               <h1>Ananjay Thakur</h1>
               <p>
-                Entry-level software developer with hands-on experience building
-                real-world applications using React and backend APIs. Interested
-                in backend systems, automation, and scalable software design.
+                Full-Stack developer with hands-on experience building real-world web
+                applications using React, Node.js, and REST APIs. Currently expanding
+                into Machine Learning, Deep Learning, and Generative AI (LLMs) to build
+                AI-integrated, production-ready systems.
               </p>
 
               <div className="badges">
-                <span className="badge">JavaScript</span>
                 <span className="badge">React</span>
-                <span className="badge">Node.js</span>
+                <span className="badge">Node.js / Express</span>
                 <span className="badge">REST APIs</span>
                 <span className="badge">MySQL</span>
                 <span className="badge">Python (Flask)</span>
+                <span className="badge">OCR + NLP API Integration</span>
+                <span className="badge">ML / DL Fundamentals (Learning)</span>
+                <span className="badge">LLM Concepts (Learning)</span>
               </div>
 
               <div className="actions">
-                <a className="btn primary" href="/resume.pdf" target="_blank" rel="noreferrer">
+                <a className="btn primary" href={LINKS.resume} target="_blank" rel="noreferrer">
                   View Resume
                 </a>
                 <a className="btn" href={LINKS.github} target="_blank" rel="noreferrer">
@@ -166,40 +171,63 @@ export default function App() {
                 </a>
               </div>
 
-              <div className="mini">Email: ananjaythaku13@gmail.com</div>
+              <div className="mini">Email: ananjaythakur13@gmail.com</div>
             </div>
 
             <div className="quick-info">
-              <div className="pill">✅ Open to Software Developer / SDE (Entry-level)</div>
+              <div className="pill">✅ Open to Full-Stack / Backend (Entry-level)</div>
+              <div className="pill">🤖 Also open to AI/GenAI Intern / Trainee roles</div>
               <div className="pill">📍 India • Remote / Hybrid</div>
-              <div className="pill">🧠 Backend & Full-Stack interests</div>
-              <div className="pill">🚀 CareConnect — End-to-end ownership</div>
+              <div className="pill">🧠 Interests: Backend systems, automation, AI apps</div>
+              <div className="pill">🚀 CareConnect: OCR + NLP + RBAC + REST APIs</div>
             </div>
           </div>
         </div>
 
-        {/* SKILLS & EDUCATION */}
         <div className="grid">
+          {/* SKILLS */}
           <div className="card section col-6 reveal" data-reveal>
             <h2>Skills</h2>
+
+            <div className="mini">Full-Stack</div>
             <div className="badges">
-              <span className="badge">JavaScript</span>
+              <span className="badge">React</span>
+              <span className="badge">JavaScript (ES6+)</span>
               <span className="badge">HTML5</span>
               <span className="badge">CSS3</span>
-              <span className="badge">React</span>
               <span className="badge">Node.js</span>
               <span className="badge">Express</span>
+              <span className="badge">REST APIs</span>
+            </div>
+
+            <div className="mini">Backend & Databases</div>
+            <div className="badges">
               <span className="badge">Python</span>
               <span className="badge">Flask</span>
               <span className="badge">SQL</span>
               <span className="badge">MySQL</span>
+            </div>
+
+            <div className="mini">AI / ML (Learning)</div>
+            <div className="badges">
+              <span className="badge">Machine Learning Fundamentals</span>
+              <span className="badge">Deep Learning Basics</span>
+              <span className="badge">NLP</span>
+              <span className="badge">LLM Concepts</span>
+              <span className="badge">Prompt Engineering</span>
+              <span className="badge">OCR + NLP APIs</span>
+            </div>
+
+            <div className="mini">Tools</div>
+            <div className="badges">
               <span className="badge">Git/GitHub</span>
               <span className="badge">Postman</span>
-              <span className="badge">Figma</span>
+              <span className="badge">VS Code</span>
+              <span className="badge">Jupyter Notebook</span>
             </div>
           </div>
 
-          {/* UPDATED EDUCATION */}
+          {/* EDUCATION */}
           <div className="card section col-6 reveal" data-reveal>
             <h2>Education</h2>
             <p>
@@ -210,8 +238,23 @@ export default function App() {
               Graduated: 2025
             </p>
             <p className="mini">
-              Coursework and projects focused on software development and system
-              design fundamentals.
+              Focused on software development, backend systems, and system design fundamentals.
+            </p>
+          </div>
+
+          {/* LEARNING */}
+          <div className="card section col-12 reveal" data-reveal>
+            <h2>Learning & Certifications</h2>
+
+            <ul className="points">
+              <li>Machine Learning Specialization — DeepLearning.AI</li>
+              <li>Deep Learning Specialization — DeepLearning.AI</li>
+              <li>Generative AI with Large Language Models (LLMs) — DeepLearning.AI (Ongoing)</li>
+              <li>Applied Machine Learning in Python — University of Michigan (Coursera)</li>
+            </ul>
+
+            <p className="mini">
+              Actively building expertise in AI concepts while strengthening full-stack engineering skills.
             </p>
           </div>
 
@@ -237,7 +280,7 @@ export default function App() {
             <p>
               Email:{" "}
               <a href={LINKS.email} style={{ textDecoration: "underline" }}>
-                ananjaythaku13@gmail.com
+                ananjaythakur13@gmail.com
               </a>
             </p>
             <p className="mini">Best way to reach me is email.</p>

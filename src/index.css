@@ -3,18 +3,24 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #0f0f14;
   color: #e5e7eb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===================== LAYOUT ===================== */
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 44px 20px;
 }
 
 .grid {
@@ -41,9 +47,10 @@ body {
 .card {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 18px;
-  padding: 24px;
+  padding: 26px;
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .section {
@@ -52,17 +59,20 @@ body {
 
 /* ===================== TYPOGRAPHY ===================== */
 h1 {
-  font-size: 2.4rem;
+  font-size: 2.35rem;
   margin: 0 0 10px;
+  letter-spacing: -0.4px;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   margin: 0 0 12px;
+  letter-spacing: -0.2px;
 }
 
 h3 {
   margin: 0 0 8px;
+  letter-spacing: -0.1px;
 }
 
 p {
@@ -72,77 +82,23 @@ p {
   margin: 0;
 }
 
+a {
+  color: inherit;
+}
+
 .mini {
   font-size: 0.9rem;
   opacity: 0.7;
   margin-top: 8px;
 }
 
-/* ===================== BADGES ===================== */
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.badge {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.badge:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* ===================== BUTTONS ===================== */
-.actions,
-.links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+/* Better spacing for skill category headings */
+.section .mini {
   margin-top: 14px;
-  align-items: center;
 }
 
-.btn {
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 0;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-  display: inline-flex;
-  align-items: center;
-}
-
-.btn.primary {
-  background: #6366f1;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.btn.primary:hover {
-  background: #7376ff;
-}
-
-.btn.ghost {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.btn.ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+.section .mini:first-of-type {
+  margin-top: 8px;
 }
 
 /* ===================== HERO ===================== */
@@ -159,23 +115,99 @@ p {
 }
 
 .kicker {
-  font-size: 0.9rem;
-  opacity: 0.75;
-  margin-bottom: 8px;
+  font-size: 0.92rem;
+  opacity: 0.78;
+  margin-bottom: 10px;
 }
 
 .quick-info {
   min-width: 320px;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   align-content: start;
 }
 
+@media (max-width: 900px) {
+  .quick-info {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
 .pill {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(99, 102, 241, 0.12);
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(99, 102, 241, 0.18);
+}
+
+/* ===================== BADGES ===================== */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, background 0.15s ease, border 0.15s ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* ===================== BUTTONS ===================== */
+.actions,
+.links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.38);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.btn.primary:hover {
+  opacity: 0.95;
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ===================== PROJECTS ===================== */
@@ -189,7 +221,7 @@ p {
 
 .project:hover {
   transform: translateY(-6px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -202,13 +234,15 @@ p {
   opacity: 0.85;
 }
 
+/* Lists used in Projects + Learning */
 .points {
   margin: 10px 0 0;
   padding-left: 18px;
+  line-height: 1.6;
 }
 
 .points li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: 0.95rem;
   opacity: 0.9;
 }
@@ -222,7 +256,7 @@ p {
 }
 
 .accordion.open {
-  max-height: 500px; /* enough for content */
+  max-height: 520px; /* enough for content */
   opacity: 1;
   margin-top: 12px;
 }
