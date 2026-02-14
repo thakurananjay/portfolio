@@ -132,17 +132,15 @@ export default function App() {
         {/* HERO */}
         <div className="card section reveal show">
           <div className="kicker">
-            ✨ Full-Stack Developer • AI/GenAI (LLMs) Learner • B.Tech CSE (2025)
+            Full-Stack Developer • AI/GenAI (LLMs) Learner • B.Tech CSE (2025)
           </div>
 
           <div className="header">
             <div style={{ flex: 1 }}>
               <h1>Ananjay Thakur</h1>
               <p>
-                Full-Stack developer with hands-on experience building real-world web
-                applications using React, Node.js, and REST APIs. Currently expanding
-                into Machine Learning, Deep Learning, and Generative AI (LLMs) to build
-                AI-integrated, production-ready systems.
+                Full-Stack developer building real-world web apps with React, Node.js, and REST APIs.
+                Currently learning ML, Deep Learning, and LLMs to ship AI-integrated, production-ready features.
               </p>
 
               <div className="badges">
@@ -175,18 +173,18 @@ export default function App() {
             </div>
 
             <div className="quick-info">
-              <div className="pill">✅ Open to Full-Stack / Backend (Entry-level)</div>
-              <div className="pill">🤖 Also open to AI/GenAI Intern / Trainee roles</div>
-              <div className="pill">📍 India • Remote / Hybrid</div>
-              <div className="pill">🧠 Interests: Backend systems, automation, AI apps</div>
-              <div className="pill">🚀 CareConnect: OCR + NLP + RBAC + REST APIs</div>
+              <div className="pill">Open to Full-Stack / Backend (Entry-level)</div>
+              <div className="pill">Also open to AI/GenAI Intern / Trainee roles</div>
+              <div className="pill">India • Remote / Hybrid</div>
+              <div className="pill">Interests: Backend systems, automation, AI applications</div>
+              <div className="pill">CareConnect: OCR + NLP + RBAC + REST APIs</div>
             </div>
           </div>
         </div>
 
         <div className="grid">
           {/* SKILLS */}
-          <div className="card section col-6 reveal" data-reveal>
+          <div className="card section col-6 reveal" data-reveal id="skills">
             <h2>Skills</h2>
 
             <div className="mini">Full-Stack</div>
@@ -243,7 +241,7 @@ export default function App() {
           </div>
 
           {/* LEARNING */}
-          <div className="card section col-12 reveal" data-reveal>
+          <div className="card section col-12 reveal" data-reveal id="learning">
             <h2>Learning & Certifications</h2>
 
             <ul className="points">
@@ -254,12 +252,12 @@ export default function App() {
             </ul>
 
             <p className="mini">
-              Actively building expertise in AI concepts while strengthening full-stack engineering skills.
+              Building strong AI foundations while continuing to develop full-stack engineering expertise.
             </p>
           </div>
 
           {/* PROJECTS */}
-          <div className="card section col-12 reveal" data-reveal>
+          <div className="card section col-12 reveal" data-reveal id="projects">
             <h2>Projects</h2>
 
             <div className="grid">
@@ -275,7 +273,7 @@ export default function App() {
           </div>
 
           {/* CONTACT */}
-          <div className="card section col-12 reveal" data-reveal>
+          <div className="card section col-12 reveal" data-reveal id="contact">
             <h2>Contact</h2>
             <p>
               Email:{" "}
