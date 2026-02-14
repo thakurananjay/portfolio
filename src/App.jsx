@@ -38,6 +38,30 @@ const PROJECTS = [
   },
 ];
 
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      setProgress(pct);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="scrollTrack" aria-hidden="true">
+      <div className="scrollBar" style={{ width: `${progress}%` }} />
+    </div>
+  );
+}
+
 function useScrollReveal() {
   const containerRef = useRef(null);
 
@@ -104,11 +128,6 @@ function ProjectCard({ p, isOpen, onToggle }) {
               <li key={d}>{d}</li>
             ))}
           </ul>
-          <div className="accordionFooter">
-            <span className="mini">
-              Can explain architecture, tradeoffs, and improvements in interviews.
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -122,6 +141,8 @@ export default function App() {
 
   return (
     <>
+      <ScrollProgress />
+
       <div className="bg-blobs">
         <div className="blob one" />
         <div className="blob two" />
@@ -129,7 +150,6 @@ export default function App() {
       </div>
 
       <div className="container" ref={rootRef}>
-        {/* HERO */}
         <div className="card section reveal show">
           <div className="kicker">
             Full-Stack Developer • AI/GenAI (LLMs) Learner • B.Tech CSE (2025)
@@ -148,10 +168,7 @@ export default function App() {
                 <span className="badge">Node.js / Express</span>
                 <span className="badge">REST APIs</span>
                 <span className="badge">MySQL</span>
-                <span className="badge">Python (Flask)</span>
-                <span className="badge">OCR + NLP API Integration</span>
-                <span className="badge">ML / DL Fundamentals (Learning)</span>
-                <span className="badge">LLM Concepts (Learning)</span>
+                <span className="badge">Python</span>
               </div>
 
               <div className="actions">
@@ -164,124 +181,29 @@ export default function App() {
                 <a className="btn" href={LINKS.linkedin} target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
-                <a className="btn" href={LINKS.email}>
-                  Email
-                </a>
               </div>
-
-              <div className="mini">Email: ananjaythakur13@gmail.com</div>
             </div>
 
             <div className="quick-info">
-              <div className="pill">Open to Full-Stack / Backend (Entry-level)</div>
-              <div className="pill">Also open to AI/GenAI Intern / Trainee roles</div>
+              <div className="pill">Open to Full-Stack / Backend roles</div>
+              <div className="pill">Open to AI / GenAI Intern roles</div>
               <div className="pill">India • Remote / Hybrid</div>
-              <div className="pill">Interests: Backend systems, automation, AI applications</div>
-              <div className="pill">CareConnect: OCR + NLP + RBAC + REST APIs</div>
             </div>
           </div>
         </div>
 
-        <div className="grid">
-          {/* SKILLS */}
-          <div className="card section col-6 reveal" data-reveal id="skills">
-            <h2>Skills</h2>
+        <div className="card section col-12 reveal" data-reveal id="projects">
+          <h2>Projects</h2>
 
-            <div className="mini">Full-Stack</div>
-            <div className="badges">
-              <span className="badge">React</span>
-              <span className="badge">JavaScript (ES6+)</span>
-              <span className="badge">HTML5</span>
-              <span className="badge">CSS3</span>
-              <span className="badge">Node.js</span>
-              <span className="badge">Express</span>
-              <span className="badge">REST APIs</span>
-            </div>
-
-            <div className="mini">Backend & Databases</div>
-            <div className="badges">
-              <span className="badge">Python</span>
-              <span className="badge">Flask</span>
-              <span className="badge">SQL</span>
-              <span className="badge">MySQL</span>
-            </div>
-
-            <div className="mini">AI / ML (Learning)</div>
-            <div className="badges">
-              <span className="badge">Machine Learning Fundamentals</span>
-              <span className="badge">Deep Learning Basics</span>
-              <span className="badge">NLP</span>
-              <span className="badge">LLM Concepts</span>
-              <span className="badge">Prompt Engineering</span>
-              <span className="badge">OCR + NLP APIs</span>
-            </div>
-
-            <div className="mini">Tools</div>
-            <div className="badges">
-              <span className="badge">Git/GitHub</span>
-              <span className="badge">Postman</span>
-              <span className="badge">VS Code</span>
-              <span className="badge">Jupyter Notebook</span>
-            </div>
-          </div>
-
-          {/* EDUCATION */}
-          <div className="card section col-6 reveal" data-reveal>
-            <h2>Education</h2>
-            <p>
-              <strong>B.Tech in Computer Science Engineering</strong>
-              <br />
-              Vellore Institute of Technology (VIT)
-              <br />
-              Graduated: 2025
-            </p>
-            <p className="mini">
-              Focused on software development, backend systems, and system design fundamentals.
-            </p>
-          </div>
-
-          {/* LEARNING */}
-          <div className="card section col-12 reveal" data-reveal id="learning">
-            <h2>Learning & Certifications</h2>
-
-            <ul className="points">
-              <li>Machine Learning Specialization — DeepLearning.AI</li>
-              <li>Deep Learning Specialization — DeepLearning.AI</li>
-              <li>Generative AI with Large Language Models (LLMs) — DeepLearning.AI (Ongoing)</li>
-              <li>Applied Machine Learning in Python — University of Michigan (Coursera)</li>
-            </ul>
-
-            <p className="mini">
-              Building strong AI foundations while continuing to develop full-stack engineering expertise.
-            </p>
-          </div>
-
-          {/* PROJECTS */}
-          <div className="card section col-12 reveal" data-reveal id="projects">
-            <h2>Projects</h2>
-
-            <div className="grid">
-              {projects.map((p) => (
-                <ProjectCard
-                  key={p.title}
-                  p={p}
-                  isOpen={openKey === p.title}
-                  onToggle={() => setOpenKey((k) => (k === p.title ? null : p.title))}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* CONTACT */}
-          <div className="card section col-12 reveal" data-reveal id="contact">
-            <h2>Contact</h2>
-            <p>
-              Email:{" "}
-              <a href={LINKS.email} style={{ textDecoration: "underline" }}>
-                ananjaythakur13@gmail.com
-              </a>
-            </p>
-            <p className="mini">Best way to reach me is email.</p>
+          <div className="grid">
+            {projects.map((p) => (
+              <ProjectCard
+                key={p.title}
+                p={p}
+                isOpen={openKey === p.title}
+                onToggle={() => setOpenKey((k) => (k === p.title ? null : p.title))}
+              />
+            ))}
           </div>
         </div>
       </div>
